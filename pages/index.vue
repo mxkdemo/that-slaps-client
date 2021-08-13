@@ -1,8 +1,6 @@
 <template>
   <v-container class="m0 p0" style="padding:0;">
-
     <Carousel />
-
     <v-container class="article-content-container">
       <v-row class="justify-space-between">
           <v-col cols="12" xs="12" sm="9" md="9" lg="8" class="mb-10 sidebar-break ">

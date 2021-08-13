@@ -1,6 +1,6 @@
 const { VuetifyLoaderPlugin } = require('vuetify-loader')
 
-const strapiBaseUri = process.env.PRODUCTION_API_URL  || "http://localhost:1337";
+const strapiBaseUri = process.env.PRODUCTION_API_URL  || "https://that-slaps-strapi.nw.r.appspot.com";
 
 export default {
   env: {
@@ -88,10 +88,10 @@ export default {
   robots: {
     UserAgent: '*',
     Allow: ['/$','/category/$','/tags/$'],
-    Sitemap: 'http://localhost/sitemap.xml'
+    Sitemap: 'https://mxkdemo.github.io/that-slaps-client/sitemap.xml'
   },
   sitemap: {
-    hostname: 'http://localhost/',
+    hostname: 'https://mxkdemo.github.io/that-slaps-client',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
