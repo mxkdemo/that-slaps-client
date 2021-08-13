@@ -1,0 +1,17 @@
+# Write your query or mutation here
+query Articles {
+   articles(where: { featured: true } limit: 3) {
+    id
+    slug
+    title
+    category {
+        name 
+    }
+    tags {
+      name
+    }
+    featuredImage{
+      url
+    }
+  }
+}

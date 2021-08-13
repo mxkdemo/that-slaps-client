@@ -1,0 +1,20 @@
+# Write your query or mutation here
+query Article($date: String!) {
+   articles(sort: "published_at:asc",where:{published_at_gt: $date}, limit:1 ) {
+    id
+    slug
+    title
+    description
+    category {
+        name 
+    }
+    tags {
+      name
+    }
+    image {
+      url,
+      formats
+    }
+    published_at
+  }
+}

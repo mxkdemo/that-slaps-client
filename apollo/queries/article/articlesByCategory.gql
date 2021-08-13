@@ -1,0 +1,18 @@
+query Articles($category: String!) {
+  articles( where: { category: { name: $category } }  ) {
+    id
+    title
+    description
+    category {
+    	name 
+    }
+    tags {
+      name
+    }
+    slug
+    image {
+      url
+      formats
+    }
+  }
+}
