@@ -1,0 +1,68 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy on new content dispatch 
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  repository_dispatch:
+    types: [merge-content-test]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  mergeContent:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.DISPATCH_HOOK_TOKEN }}
+          submodules: recursive
+
+      - name: Pull the content
+        run: git pull
+      - name: Update submodules index
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # Required
+          commit_message: Update submodule
+
+          # Optional commit user and author settings
+          commit_user_name: My GitHub Actions Bot
+          commit_user_email: actions@github.com # to change
+          commit_author: My GitHub Actions Bot <actions@github.com>
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+            node-version: '15.8.0'
+            cache: 'npm'
+      - run: npm install
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - run: npm run generate
+
+      - name: GitHub Pages v3
+        uses: peaceiris/actions-github-pages@v3.1.12
+        with:
+          github_token: ${{ secrets.DISPATCH_HOOK_TOKEN }}
+          personal_token: ${{ secrets.DISPATCH_HOOK_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
+          commit_message: nuxt deploy
+
+

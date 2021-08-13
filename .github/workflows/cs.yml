@@ -1,0 +1,59 @@
+name: auto deploy 
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  repository_dispatch:
+    types: 
+      - webhook
+      
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  cd:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          token: ${{ secrets.DISPATCH_HOOK_TOKEN }}
+          submodules: recursive
+
+      - name: Pull the content
+        run: git pull
+      - name: merge content from submodule
+        run: git submodule update --remote --recursive
+        
+      - name: Update submodules index
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # Required
+          commit_message: Update submodule
+          # Optional commit user and author settings
+          commit_user_name: My GitHub Actions Bot
+          commit_user_email: actions@github.com # to change
+          commit_author: My GitHub Actions Bot <actions@github.com>
+
+      - name: Setup node env
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate
+        run: yarn run generate
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DISPATCH_HOOK_TOKEN }}
+          publish_dir: ./dist
