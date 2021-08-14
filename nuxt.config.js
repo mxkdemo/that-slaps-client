@@ -5,7 +5,7 @@ const api_url = process.env.NODE_ENV == "production"
   : 'http://localhost:1337'
 
   const host_url = process.env.NODE_ENV == "production"
-  ? "https://mxkdemo.github.io/that-slaps-client"
+  ? "https://mxkdemo.github.io"
   : 'http://localhost'
 
 export default {
