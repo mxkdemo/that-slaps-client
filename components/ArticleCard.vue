@@ -69,7 +69,7 @@
     },
     computed: {
       api_url() {
-        return process.env.strapiBaseUri
+        return process.env.api_url
       }
     },
     data: () => ({

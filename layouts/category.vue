@@ -35,7 +35,7 @@ export default {
       },
   },
   data: () => ({
-      api_url:process.env.strapiBaseUri,
+      api_url:process.env.api_url,
       query: '',
       articles: {}
   }),

@@ -1,12 +1,14 @@
-const { VuetifyLoaderPlugin } = require('vuetify-loader')
+// const api_url = process.env.NODE_ENV == "production"
+//   ? "https://that-slaps-strapi.nw.r.appspot.com"
+//   : 'http://localhost:1337'
 
-const api_url = process.env.NODE_ENV == "production"
-  ? "https://that-slaps-strapi.nw.r.appspot.com"
-  : 'http://localhost:1337'
+//   const host_url = process.env.NODE_ENV == "production"
+//   ? "https://mxkdemo.github.io"
+//   : 'http://localhost'
 
-  const host_url = process.env.NODE_ENV == "production"
-  ? "https://mxkdemo.github.io"
-  : 'http://localhost'
+const api_url = 'http://localhost:1337'
+
+const host_url = 'http://localhost:3000'
 
 export default {
   env: {

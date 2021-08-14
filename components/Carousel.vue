@@ -39,9 +39,13 @@
         query: featuredQuery
       },
     },
+    computed: {
+      api_url() {
+        return process.env.api_url
+      }
+    },
     data: () => ({
         articles: [],
-        api_url: process.env.strapiBaseUri,
     }),
   }
 </script>

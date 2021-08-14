@@ -45,15 +45,10 @@
     },
     computed: {
       api_url() {
-        return process.env.strapiBaseUri
+        return process.env.api_url
       }
     },
     data: () => ({
-      image: {
-        src:'',
-        srcSet:''
-      },
-      sizes: 'xs:300vw sm:600vw md:900vw'
     }),
     methods: {
       onMouseEnter() {
