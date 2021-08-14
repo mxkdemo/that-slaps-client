@@ -1,13 +1,19 @@
 const { VuetifyLoaderPlugin } = require('vuetify-loader')
 
-const strapiBaseUri = process.env.PRODUCTION_API_URL  || "https://that-slaps-strapi.nw.r.appspot.com";
+const api_url = process.env.NODE_ENV == "production"
+  ? "https://that-slaps-strapi.nw.r.appspot.com"
+  : 'http://localhost:1337'
+
+  const host_url = process.env.NODE_ENV == "production"
+  ? "https://mxkdemo.github.io/that-slaps-client"
+  : 'http://localhost'
 
 export default {
   env: {
-    strapiBaseUri,
+    api_url,
   },
   router: {
-    base: '/that-slaps/'
+    base: '/that-slaps-client/'
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -54,7 +60,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: strapiBaseUri + "/graphql",
+        httpEndpoint: api_url + "/graphql",
         $query: {
           loadingKey: 'loading',
           fetchPolicy: 'cache-and-network',
@@ -88,10 +94,10 @@ export default {
   robots: {
     UserAgent: '*',
     Allow: ['/$','/category/$','/tags/$'],
-    Sitemap: 'https://mxkdemo.github.io/that-slaps-client/sitemap.xml'
+    Sitemap: host_url + '/sitemap.xml'
   },
   sitemap: {
-    hostname: 'https://mxkdemo.github.io/that-slaps-client',
+    hostname: host_url,
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -104,11 +110,4 @@ export default {
   build: {
 
   },
-  // generate: {
-  //   async routes () {
-  //     const { $content } = require('@nuxt/content')
-  //     const files = await $content({ deep: true }).fetch()
-  //     return files.map(file => file.dir)
-  //   }
-  // }
 }
