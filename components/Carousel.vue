@@ -4,7 +4,7 @@
         <v-carousel height="500" hide-delimiters continuous cycle  interval="7000">
           <v-carousel-item v-for="(item,i) in articles" :key="i">   
             <v-parallax dark height="500" :src="api_url + item.featuredImage.url" class="pa-0 ma-0" >
-                <div class="text-h2 solo-overlay">
+                <div class="text-h2 solo-overlay" @click.stop="$router.push('/' + item.slug)">
                         <div class="" style="padding-left:80px;font-size:28px !important;letter-spacing: 2px; padding-bottom:0 !important;margin-bottom:0 !important">
                             {{item.category.name.toUpperCase()}}
                         </div>

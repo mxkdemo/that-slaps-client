@@ -11,14 +11,6 @@
          <div class="that-slaps-font" style="font-size:64px !important; color:#272727;letter-spacing:1.2px;line-height:1;"> THAT SLAPS </div>
       </v-col>
     </v-row>
-    <!-- <v-img      src="logo.jpg"
-      height="219px"
-      contain
-    ></v-img> -->
-<!-- 
-    <v-card-title class="ibx-font" style="justify-content:center;font-weight:600;font-size:2em;word-break:keep-all;">
-      {{this.follow.toUpperCase()}}
-    </v-card-title> -->
 
     <v-card-actions style="justify-content:center">
        <v-btn

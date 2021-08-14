@@ -18,7 +18,7 @@
         </v-navigation-drawer>
         <v-app-bar app dark flat dense>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" style="color:#ffefd5;"></v-app-bar-nav-icon>
-            <v-btn class="that-slaps-font" style="font-size:3em;color:#ffefd5;letter-spacing:1.2px"  :to="'/'" text tile>         
+            <v-btn class="that-slaps-font" style="font-size:3em;color:#ffefd5;letter-spacing:1.2px;min-width:207px"  :to="'/'" text tile>         
                 that slaps            
             </v-btn>     
             <v-spacer></v-spacer>
