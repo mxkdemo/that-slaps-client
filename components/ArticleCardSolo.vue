@@ -3,7 +3,7 @@
  <v-card tile outlined class="mx-auto fill-height" max-width="845">
     
               <v-img
-                :src="api_url + article.image.url"
+                :src="article.image.url"
                 :alt="article.title" @click.stop="$router.push(article.slug)" 
                 style="cursor:pointer;"
                 class="white--text align-end offset-image"  

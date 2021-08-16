@@ -56,7 +56,7 @@
       <v-col xs="12" sm="10" md="10" lg="8" xl="5" class="justify-center align-center text-center">
             <v-img
             contain
-      :src="api_url + articleBySlug.image.url"></v-img> 
+      :src="articleBySlug.image.url"></v-img> 
       </v-col>
     </v-row>
 
@@ -104,5 +104,9 @@
 <style lang="scss" scoped>
   #app > article > p {
     font-size: 2em !important;
+  }
+  img {
+    max-width: -webkit-fill-available !important;
+    max-width: fill-available !important;
   }
 </style>

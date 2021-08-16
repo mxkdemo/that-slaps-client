@@ -22,7 +22,7 @@
                     tile
                 >
                   <v-img 
-                  :src="api_url + item.image.formats.thumbnail.url + '?resize&sizes[]=600'"
+                  :src="item.image.formats.thumbnail.url + '?resize&sizes[]=600'"
                   @click.stop="$router.push(item.slug)"
                   style="cursor:pointer"></v-img>
                 </v-avatar>

@@ -12,7 +12,7 @@
         v-slot:default="{ hover }"
       >
     <v-img
-      :src="api_url + article.image.formats.small.url "
+      :src="article.image.formats.small.url "
       height="277"
       max-height="277"
       @click.stop="$router.push(article.slug)"
