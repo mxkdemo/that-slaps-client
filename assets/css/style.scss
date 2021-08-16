@@ -114,4 +114,11 @@ div.container.article-content-container .v-chip.v-size--x-small {
   }
 }
 
+.article-content-font > img {
+  max-width: -webkit-fill-available !important;
+}
+
+article img {
+   max-width: -webkit-fill-available !important;
+}
 

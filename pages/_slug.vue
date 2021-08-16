@@ -105,8 +105,4 @@
   #app > article > p {
     font-size: 2em !important;
   }
-  img {
-    max-width: -webkit-fill-available !important;
-    max-width: fill-available !important;
-  }
 </style>
