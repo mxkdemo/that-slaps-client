@@ -47,7 +47,7 @@ body {
 .article-header-font {
     font-family: 'IBM Plex Sans', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 46px !important;
+    font-size: 46px;
     font-display: block;
 }
 
@@ -58,13 +58,13 @@ body {
     font-display: block;
 }
 
-#app > div > div > header > div > a.theme--dark.v-btn--active::before {
-    opacity: 0 !important;
-}
+// #app > div > div > header > div > a.theme--dark.v-btn--active::before {
+//     opacity: 0 !important;
+// }
 
-#app > div.v-application--wrap > div > nav > div.v-navigation-drawer__content > a.theme--light.v-list-item--active::before {
-    opacity: 0 !important;
-}
+// #app > div.v-application--wrap > div > nav > div.v-navigation-drawer__content > a.theme--light.v-list-item--active::before {
+//     opacity: 0 !important;
+// }
 
 div.container.article-content-container .v-chip.v-size--x-small {
   font-size: 12px;
@@ -106,6 +106,17 @@ div.container.article-content-container .v-chip.v-size--x-small {
   .container {
     max-width: inherit !important;
   }
+  .solo {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .solo {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 
 .article-content-font > img {
@@ -116,3 +127,38 @@ article img {
    max-width: -webkit-fill-available !important;
 }
 
+
+blockquote{
+  font-size: 1.4em;
+  width:60%;
+  margin:50px auto;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #272727 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
+
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#272727;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}

@@ -1,0 +1,18 @@
+query Articles {
+   articles(limit: 3) {
+    id
+    slug
+    title
+    description
+    category {
+        name
+    }
+    image {
+        formats
+        url
+    }
+    featuredImage {
+        url
+    }
+  }
+}

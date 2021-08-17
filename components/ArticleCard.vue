@@ -34,7 +34,7 @@
       {{article.category.name.toUpperCase()}}
     </v-card-subtitle>
 
-    <v-card-title class="justify-center text-center mt-0 pt-1 pb-0 mb-0" style="word-break: keep-all;height:96px;align-content:baseline">
+    <v-card-title class="justify-center text-center mt-0 pt-1 pb-0 mb-0" style="word-break: keep-all;height:96px;align-content:baseline;text-overflow: ellipsis;overflow:hidden">
       <router-link :to="'../' + article.slug" class="article-subheader-font">{{article.title}}</router-link>
     </v-card-title>
 
@@ -96,11 +96,10 @@
 <style>
 
 .solo {
-  max-width: 377px;
+  max-width: 100%
 }
-
 .duo {
-  max-width: 577px;
+  max-width: 100%;
 }
 
 </style>

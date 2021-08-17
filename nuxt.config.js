@@ -71,6 +71,11 @@ export default {
     vuetify: {
       // customVariables: ['~/assets/variables.scss'],
       // treeShake: false,
+      breakpoint: {
+        thresholds: {
+          xs: 700,
+        },
+      },
         theme: {
           dark:false,
           themes: {

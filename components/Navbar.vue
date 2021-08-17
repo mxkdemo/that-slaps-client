@@ -3,7 +3,9 @@
         <v-navigation-drawer v-model="drawer" app dense disable-resize-watcher>
             <v-list-item to="/">
                 <v-list-item-content>
-                    <div class="that-slaps-font text-center" style="font-size:64px !important;letter-spacing:1.2px;font-weight:700"> THAT SLAPS. </div>
+                    <div class="that-slaps-font text-center" style="font-size:48px !important;letter-spacing:1.2px;font-weight:700"> THAT</div>
+                <div class="that-slaps-font text-center" style="font-size:48px !important;letter-spacing:1.2px;font-weight:700"> SLAPS.</div>
+
                 </v-list-item-content>
             </v-list-item>
             <v-list dense>
@@ -17,13 +19,12 @@
             </v-list>
         </v-navigation-drawer>
 
-<header class="site-header">
-    <v-row class="">
+    <v-row class="site-header">
           <v-col cols="12" class="" align="center" justify="center">
               <h1 class="that-slaps-font page-header-font" style="cursor:pointer" @click.stop="$router.push('/')">THAT SLAPS.</h1>
           </v-col>
       </v-row>
-</header>
+
 
         <v-app-bar 
         app elevation="1" color="white" id="that-slaps-navbar" style="position:relative;margin-bottom: -64px;">
@@ -100,6 +101,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
 }
 
 .that-slaps-logo {
