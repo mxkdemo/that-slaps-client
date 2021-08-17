@@ -1,7 +1,7 @@
 <template>
-  <v-app dark>
+  <v-app>
     <Navbar />
-    <v-main>
+    <v-main style="padding: 100px 0;">
         <Nuxt />
     </v-main>
     <Footer />

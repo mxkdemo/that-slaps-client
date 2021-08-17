@@ -1,6 +1,15 @@
 <template>
 <v-row>
-    <v-col cols="12" sm="6" v-for="item in articles" :key="item.title" class="mb-10">
+     <v-col cols="12" class="mb-10 sidebar-break">  
+          <v-row class="center">
+          <v-col cols="12" class="mb-10" align="center" justify="center">
+              <h1 class="article-header-font page-header-font">{{this.header + this.$route.params.slug.toUpperCase()}}</h1>
+          </v-col>
+      </v-row>
+          <Nuxt />          
+        </v-col>
+
+    <v-col cols="12" v-for="item in articles" :key="item.title" class="mb-10">
          <ArticleCard v-if="articles.length > 0" :article="item" />      
     </v-col>   
     <v-col cols="12" class="text-center">
@@ -13,7 +22,6 @@
 import articlesByCategory from '~/apollo/queries/article/articlesByCategory'
 
 export default {
-    layout:"category",
     apollo: {
         articles: {
             prefetch: true,
@@ -28,5 +36,11 @@ export default {
         query: '',
         articles: {}
     }),
+    computed: {
+    header: function() {
+      let head = this.$route.name.replace("-slug","")
+      return head == "tags" ? "TAGS - " : "" 
+    } 
+  }
 }
 </script>

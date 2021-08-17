@@ -5,12 +5,12 @@
                 <FollowUs />
             </v-col>
         </v-row>
-        <v-row align="stretch" justify="center">
+        <v-row align="stretch" justify="center" class="sticky">
             <v-col cols="12">
                 <Newsletter />
             </v-col>
         </v-row>
-        <v-row align="stretch" justify="center" class="sticky">
+        <v-row align="stretch" justify="center" >
             <v-col cols="12"  >
                 <LatestPosts :articles="latestArticles" />
             </v-col>

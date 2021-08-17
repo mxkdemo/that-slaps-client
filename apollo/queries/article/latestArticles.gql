@@ -1,5 +1,5 @@
 query Articles {
-   articles(limit: 4) {
+   articles(limit: 3) {
     id
     slug
     title

@@ -1,14 +1,13 @@
 <template>
 
- <v-card tile outlined class="mx-auto fill-height" max-width="845">
+ <v-card tile outlined class="mx-auto fill-height" :max-width="1300">
     
               <v-img
-                :src="article.image.url"
+                :src="api_url + article.image.url"
                 :alt="article.title" @click.stop="$router.push(article.slug)" 
                 style="cursor:pointer;"
                 class="white--text align-end offset-image"  
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"        
-                background-position="right 20px bottom 10px !important;"
                 height="300px"
               >
 
@@ -19,13 +18,7 @@
                 
               </v-img>
               <div @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()" @click.stop="$router.push(article.slug)" class="solo-overlay"> </div>                    
-            <v-card-actions style="justify-content:space-between">
-            <v-chip-group column>
-              <v-chip x-small label outlined v-for="item in article.tags" :key="item.name" :to="'/tags/' + item.name">
-                <v-icon left> mdi-label</v-icon>
-                {{item.name}}
-              </v-chip>
-            </v-chip-group>
+            <v-card-actions style="justify-content:center">
               <v-btn text tile outlined :to="article.slug">
                 READ MORE
               </v-btn>
@@ -45,7 +38,7 @@
     },
     computed: {
       api_url() {
-        return process.env.api_url
+        return process.env.NODE_ENV == "production" ? '' : process.env.api_url
       }
     },
     data: () => ({

@@ -1,21 +1,22 @@
 <template>
    <v-card
     class="mx-auto fill-height"
-    max-width="377"
+    :class="cardWidth"
     tile
     outlined
     height="100%"
     style="display: flex;flex-direction: column;"    
     v-cloak
+
   >
     <v-hover
         v-slot:default="{ hover }"
       >
     <v-img
-      :src="article.image.formats.small.url "
+      :src="api_url + article.image.formats.small.url "
       height="277"
       max-height="277"
-      @click.stop="$router.push(article.slug)"
+      @click.stop="$router.push('../' + article.slug)"
       :alt="article.title"
       style="cursor:pointer">
         <v-fade-transition>
@@ -34,14 +35,14 @@
     </v-card-subtitle>
 
     <v-card-title class="justify-center text-center mt-0 pt-1 pb-0 mb-0" style="word-break: keep-all;height:96px;align-content:baseline">
-      <router-link :to="'/' + article.slug" class="article-subheader-font">{{article.title}}</router-link>
+      <router-link :to="'../' + article.slug" class="article-subheader-font">{{article.title}}</router-link>
     </v-card-title>
 
     <v-card-text class="grow text-center">
       {{article.description}}
     </v-card-text>
 
-    <v-col class="mx-0 my-0 py-0">     
+    <!-- <v-col class="mx-0 my-0 py-0">     
       <v-chip-group column>
             <v-chip x-small label outlined style="background-color:#272727" v-for="item in article.tags" 
               :key="item.name" @click.stop="$router.push('/tags/' + item.name)">
@@ -49,10 +50,10 @@
               {{item.name}}
             </v-chip>
           </v-chip-group>
-    </v-col>
+    </v-col> -->
 
     <v-card-actions class="justify-center text-center" style="">
-      <v-btn text tile outlined :to="article.slug">Read More</v-btn>
+      <v-btn text tile outlined :to="'../' + article.slug">Read More</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -65,20 +66,20 @@
         type: Object,
         required: true,
         default: ()=>{}
+      },
+      cardWidth: {
+        type: String,
+        required: false,
+        default: 'solo'
       }
     },
     computed: {
       api_url() {
-        return process.env.api_url
-      }
+        return process.env.NODE_ENV == "production" ? '' : process.env.api_url
+      },
     },
     data: () => ({
-      sizes: 'xs:300vw sm:600vw md:900vw'
     }),
-    methods: {
-    },
-    beforeMount() {
-    }
   }
 </script>
 
@@ -90,4 +91,16 @@
       color:#424242 !important;
     }
   }
+</style>
+
+<style>
+
+.solo {
+  max-width: 377px;
+}
+
+.duo {
+  max-width: 577px;
+}
+
 </style>

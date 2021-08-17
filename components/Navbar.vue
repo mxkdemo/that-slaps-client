@@ -1,32 +1,41 @@
 <template>
     <div>
-        <v-navigation-drawer v-model="drawer" app dense disable-resize-watcher style="background-color:#272727">
+        <v-navigation-drawer v-model="drawer" app dense disable-resize-watcher>
             <v-list-item to="/">
                 <v-list-item-content>
-                    <div class="that-slaps-font text-center" style="font-size:64px !important; color:#ffefd5;letter-spacing:1.2px"> THAT SLAPS </div>
+                    <div class="that-slaps-font text-center" style="font-size:64px !important;letter-spacing:1.2px;font-weight:700"> THAT SLAPS. </div>
                 </v-list-item-content>
             </v-list-item>
             <v-list dense>
-                <v-list-item link v-for="item in menu" :key="item.name" :to="'/category/'+item.name">
+                <v-list-item link v-for="item in categories" :key="item.name" :to="'/category/' + item.name">
                 <v-list-item-content>
-                    <v-list-item-title style="color:#f8f8ff; font-size:0.875rem;">
+                    <v-list-item-title style="; font-size:0.875rem;">
                         {{item.name.toUpperCase()}}
                     </v-list-item-title>
                 </v-list-item-content>
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-app-bar app dark flat dense>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" style="color:#ffefd5;"></v-app-bar-nav-icon>
-            <v-btn class="that-slaps-font" style="font-size:3em;color:#ffefd5;letter-spacing:1.2px;min-width:207px"  :to="'/'" text tile>         
-                that slaps            
-            </v-btn>     
-            <v-spacer></v-spacer>
-            <v-row justify="center" align="center" class="hidden-sm-and-down" style="margin-left:-128px">
-                <v-col cols="12" >
-                    <div v-for="(item, index) in menu" :key="item.name" style="display:inline;color:#f8f8ff !important">
-                        <v-btn class="" text :to="'/category/'+item.name"> {{item.name}} </v-btn> 
-                        <p v-if="index != menu.length - 1" style="display:inline">-</p>
+
+<header class="site-header">
+    <v-row class="">
+          <v-col cols="12" class="" align="center" justify="center">
+              <h1 class="that-slaps-font page-header-font" style="cursor:pointer" @click.stop="$router.push('/')">THAT SLAPS.</h1>
+          </v-col>
+      </v-row>
+</header>
+
+        <v-app-bar 
+        app elevation="1" color="white" id="that-slaps-navbar" style="position:relative;margin-bottom: -64px;">
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" ></v-app-bar-nav-icon>
+        <div class="that-slaps-font that-slaps-logo slide-out" id="that-slaps-logo" 
+            style="position:absolute;font-weight:700;font-size:2em;cursor:pointer;transform: translateX(-100%);" 
+            @click.stop="$router.push('/')" v-cloak>THAT SLAPS.</div>
+            <v-row justify="center" align="center" class="hidden-sm-and-down" style="">
+                <v-col cols="12" style="display:flex;justify-content:center">
+                    <div v-for="(item, index) in categories" :key="item.name" style="display:inline;font-weight:600">
+                        <v-btn class="" text :to="'/category/' + item.name"> {{item.name}} </v-btn> 
+                        <p v-if="index != categories.length - 1" style="display:inline">-</p>
                     </div>  
                 </v-col>
             </v-row>
@@ -35,15 +44,107 @@
 </template>
 
 <script>
+import categoriesQuery from '~/apollo/queries/category/categories'
 export default {
+    apollo: {
+      categories: {
+        prefetch: true,
+        query: categoriesQuery,
+      },
+    },     
     data: () => ({
         drawer: false,
-        menu: [
-            { name: "news", icon:"mdi-home" },
-            { name: "restaurants", icon:"mdi-home" },
-            { name: "bars", icon:"mdi-home" },
-            { name: "things to do", icon:"mdi-home" }
-        ]
     }),
+    computed: {
+        thatSlapsNavbar() {
+            return document.getElementById("that-slaps-navbar").offsetTop;
+        }
+    },
+    mounted  () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeDestroy  () {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        getDistance() {
+            var header = document.getElementById("that-slaps-navbar");
+            var topDist = header.offsetTop;
+            return topDist;
+        },
+        handleScroll (event) {
+            var header = document.getElementById("that-slaps-navbar");
+            var logo = document.getElementById("that-slaps-logo");
+                if (event.currentTarget.pageYOffset > this.thatSlapsNavbar) {
+                    header.classList.add('sticky-nav')
+                    logo.classList.add('slide-in')
+                    logo.classList.remove('slide-out')
+                } else {
+                    header.classList.remove('sticky-nav')
+                    logo.classList.add('slide-out')
+                    logo.classList.remove('slide-in')
+                }    
+        }
+    }
 }
 </script>
+
+<style scoped>
+    .sticky-nav {
+        position: fixed !important;
+        top: 0px;
+    }
+    .site-header {
+  height: 200px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.that-slaps-logo {
+    margin-left:-50px;
+     transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+}
+
+ @media only screen and (min-width: 960px) {
+     .slide-in {
+    margin-left:0px;
+    animation: slide-in 0.3s forwards;
+    -webkit-animation: slide-in 0.3s forwards;
+}
+ .slide-out {
+    margin-left:-50px;
+    animation: slide-out 0.3s forwards;
+    -webkit-animation: slide-out 0.3s forwards;
+}
+  }
+
+ @media only screen and (max-width: 960px) {
+    .slide-in {
+        margin-left:170px;
+    }
+  }
+
+
+    
+@keyframes slide-in {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateX(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+
+</style>

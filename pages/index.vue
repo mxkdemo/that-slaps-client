@@ -1,26 +1,38 @@
 <template>
-  <v-container class="m0 p0" style="padding:0;">
-    <Carousel />
     <v-container class="article-content-container">
-      <v-row class="justify-space-between">
-          <v-col cols="12" xs="12" sm="9" md="9" lg="8" class="mb-10 sidebar-break ">
+
+          <Carousel />
+  
+
+ 
+          
             <v-row class="" dense v-for="article in articleGroups" :key="article.id">
-                <v-col cols="12" xs="12" sm="6" md="6" lg="6" class="mb-10">
-                <ArticleCard :article="article[0]" />
+                <v-col cols="12" sm="6" md="4" class="py-3 px-3">
+                <ArticleCard :article="article[0]"  />
                 </v-col>
-                <v-col cols="12" xs="12" sm="6" md="6" lg="6" class="mb-10">
-                <ArticleCard :article="article[1]" />
+                <v-col cols="12" sm="6" md="4" class="py-3 px-3">
+                <ArticleCard :article="article[1]"  />
                 </v-col>
-                <v-col cols="12" class="mb-10">
-                <ArticleCardSolo :article="article[2]" />
+                 <v-col cols="12" sm="12" md="4" class="py-3 px-3">
+                <ArticleCard :article="article[2]" />
                 </v-col>
             </v-row>
-          </v-col>
-          <Sidebar :latestArticles="latestArticles" />
-      </v-row>
+            <v-row class="" dense v-for="article in articleGroups" :key="article.id" style="">
+                <v-col cols="12" sm="6" class="py-3 px-3">
+                <ArticleCard :article="article[0]" :cardWidth="'duo'" />
+                </v-col>
+                <v-col cols="12" sm="6" class="py-3 px-3">
+                <ArticleCard :article="article[1]" :cardWidth="'duo'" />
+                </v-col>
+                
+            </v-row>
+            <v-row v-for="article in articleGroups" :key="article.id">
+              <v-col cols="12" class="py-3 px-5">
+                <ArticleCardSolo :article="article[2]" />
+              </v-col>
+            </v-row>      
+      
     </v-container>    
-
-  </v-container>
 </template>
 
 <script>

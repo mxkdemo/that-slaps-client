@@ -8,7 +8,7 @@
       flat
       tile
     >
-      <v-card-title justify="center" align="center" class=" text-center" style="justify-content:center;flex-direction:column;background-color:#ffefd5;">
+      <v-card-title justify="center" align="center" class=" text-center" style="justify-content:center;flex-direction:column;">
           <v-row>
  <v-col cols="12">
         <v-btn
@@ -16,26 +16,25 @@
           :key="icon"
           class="mx-4"
           icon
-          style="color:#272727 !important"
         >
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
         </v-col>
         <v-col cols="12">
         <v-btn
-          v-for="item in items" :key="item"
+          v-for="item in items" :key="item.page"
           text
-          style="color:#272727 !important"
+          :to="item.route"
         >
-        {{item.toUpperCase()}}
+        {{item.page.toUpperCase()}}
         </v-btn>
         </v-col>
           </v-row>
          
       </v-card-title>
 
-      <v-card-text class="py-2 text-center that-slaps-font" style="font-size:32px;color:#ffefd5;">
-        {{ new Date().getFullYear() }}   <sup style="font-size:18px;font-family: Roboto,sans-serif; !important">&copy;</sup> THAT SLAPS
+      <v-card-text class="py-2 text-center that-slaps-font" style="font-size:32px;background-color:#fff;color:#272727;font-weight:700">
+        {{ new Date().getFullYear() }}   <sup style="font-size:18px;font-family: Roboto,sans-serif; !important">&copy;</sup> THAT SLAPS.
       </v-card-text>
     </v-card>
   </v-footer>
@@ -43,21 +42,19 @@
 
 <script>
 export default {
-    data () {
-        return {
-            icons: [
-            'mdi-facebook',
-            'mdi-twitter',
-            'mdi-linkedin',
-            'mdi-instagram',
-        ],
-                    items: [
-            'about',
-            'terms & conditions',
-            'privicy policy',
-            'contact',
-        ],
-        }
+  data () {
+    return {
+      icons: [
+        'mdi-facebook',
+        'mdi-instagram',
+      ],
+      items: [
+        {page: 'about', route: '/about'},
+        {page: 'contact', route: 'contact'},
+        {page: 'terms & conditions', route: '/terms-and-conditions'},
+        {page: 'privacy policy', route: '/privacy-policy'},
+      ],
+    }
   }
 }
 </script>

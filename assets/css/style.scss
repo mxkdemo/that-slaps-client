@@ -25,6 +25,13 @@ body {
   font-display: block;
 }
 
+.page-header-font {
+  font-size: 48px !important;
+  color: rgb(39, 39, 39);
+  letter-spacing: 1.2px;
+  line-height: 1;
+}
+
 .ibx-font {
   font-family: 'IBM Plex Sans', sans-serif !important;
   font-display: block;
@@ -64,7 +71,7 @@ div.container.article-content-container .v-chip.v-size--x-small {
 }
 
 .offset-image > .v-image__image.v-image__image--cover {
-    background-position: right 20px bottom 10px !important;   
+    background-position: right 0px bottom 10px !important;   
 }
 
 .sticky {
@@ -88,19 +95,6 @@ div.container.article-content-container .v-chip.v-size--x-small {
     }
   }
 
-  // @media only screen and (min-width: 940px) {
-  //   .article-content-container { 
-  //     width: 1000px !important;
-  //     max-width: 1000px !important;
-  //   }
-  // }
-
-  // @media only screen and (min-width: 1080px) {
-  //   .article-content-container { 
-  //     width: 1000px !important;
-  //     max-width: 1000px !important;
-  //   }
-  // }
   @media only screen and (min-width: 1263px) {
     .article-content-container { 
       width: 1400px !important;

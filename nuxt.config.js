@@ -1,3 +1,5 @@
+import colors from 'vuetify/lib/util/colors'
+
 const api_url = process.env.NODE_ENV == "production"
   ? "https://that-slaps-strapi.nw.r.appspot.com"
   : 'http://localhost:1337'
@@ -50,10 +52,9 @@ export default {
   buildModules: [
     '@nuxtjs/vuetify',
     "@nuxt/content",
-    '@aceforth/nuxt-optimized-images',
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
-    '@/modules/generator'
+    '@/modules/generator',
   ],
   apollo: {
     clientConfigs: {
@@ -66,21 +67,34 @@ export default {
       }
     }
   },
-
+    // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+    vuetify: {
+      // customVariables: ['~/assets/variables.scss'],
+      // treeShake: false,
+        theme: {
+          dark:false,
+          themes: {
+            dark: {
+              primary: colors.red.darken2,
+              accent: colors.red.darken3,
+              secondary: colors.red.darken3,
+              background: colors.red.darken2
+            },
+            light: {
+             primary: '#272727',
+             secondary: colors.green.darken2,
+             accent: colors.orange.darken2,
+             error: colors.red.darken2,
+            }
+          }
+        }
+    },
   markdownit: {
     preset: "default",
     linkify: true,
     breaks: true,
     injected: true,
     html: true,
-  },
-
-  optimizedImages: {
-    optimizeImages: true,
-    optimizeImagesInDev: true,
-    responsive: {
-      adapter: require("responsive-loader/sharp"),
-    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -96,12 +110,6 @@ export default {
   },
   sitemap: {
     hostname: host_url,
-  },
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    treeShake: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

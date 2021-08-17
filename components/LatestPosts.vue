@@ -22,7 +22,7 @@
                     tile
                 >
                   <v-img 
-                  :src="item.image.formats.thumbnail.url + '?resize&sizes[]=600'"
+                  :src="api_url + item.image.formats.thumbnail.url + '?resize&sizes[]=600'"
                   @click.stop="$router.push(item.slug)"
                   style="cursor:pointer"></v-img>
                 </v-avatar>
@@ -46,7 +46,7 @@
     }),
     computed: {
       api_url() {
-        return process.env.api_url
+        return process.env.NODE_ENV == "production" ? '' : process.env.api_url
       }
     },
   }
