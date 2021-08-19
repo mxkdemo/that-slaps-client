@@ -41,12 +41,13 @@
 </template>
 
 <script>
+import { mdiFacebook, mdiInstagram } from '@mdi/js'
 export default {
   data () {
     return {
       icons: [
-        'mdi-facebook',
-        'mdi-instagram',
+        mdiFacebook,
+        mdiInstagram,
       ],
       items: [
         {page: 'about', route: '/about'},

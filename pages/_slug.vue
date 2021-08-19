@@ -1,6 +1,6 @@
 <template>
 <div v-cloak>
-  <article v-if="!$apollo.loading && articleBySlug">
+  <article v-if="!$apollo.loading && articleBySlug" v-cloak>
     <Share :article="articleBySlug" />
     <v-container>
     <v-row align="center" justify="center">
@@ -49,24 +49,30 @@
     </v-row>   
         <v-row align="center" justify="center">
       <v-col class="text-left" xs="12" sm="10" md="10" lg="8" xl="5">   
-        <v-divider class="mx-4"></v-divider>
-             <v-chip-group column>
+       
+      <v-chip-group column>
         <v-chip small label outlined color="" style="" text-color="#272727" v-for="item in articleBySlug.tags" :key="item.name" :to="'../tags/' + item.name">
-          <v-icon left dark> mdi-label</v-icon>
-          {{item.name}}
+          <v-icon left dark>{{labelSVG}}</v-icon>
+          {{item.name.toLowerCase()}}
         </v-chip>
       </v-chip-group> 
-
+        <v-divider class=" my-6"></v-divider>
       </v-col>
     </v-row>   
+    
     </v-container>
   </article>
+  <PrevNext v-if="!$apollo.loading && publishedat" :date="publishedat" />
+   <v-divider class="mx-6 my-6"></v-divider>
+   <Related v-if="!$apollo.loading" />
   <Error v-if="!$apollo.loading && !articleBySlug"  />
   </div>
 </template>
 
 <script>
   import articleQuery from '~/apollo/queries/article/article'
+
+  import { mdiLabelOutline } from '@mdi/js'
   export default {
     apollo: {
       articleBySlug: {
@@ -74,23 +80,34 @@
         query: articleQuery,
         variables() {
           return { slug: this.$route.params.slug }
-        },
-        error (error) {
-         return false
+        },    
+        result ({ data, loading, networkStatus }) {
+          if (data && data.articleBySlug) {
+            this.publishedat = data.articleBySlug.published_at
+          }
         },
       },
     },
     data: () => ({
-      api_url:process.env.api_url,
       query: '',
-      articleBySlug: {}
+      articleBySlug: {},
+      nextArticle: {},
+      prevArticle: {},
+      labelSVG: mdiLabelOutline,
+      publishedat: null,
+      slug: null
     }),
     methods: {
       formatDate (date) {
         const options = { month: 'numeric',year: 'numeric', day: 'numeric' }
         return new Date(date).toLocaleDateString('en', options)
       },
-    }
+    },
+    computed: {
+      api_url() {
+        return process.env.NODE_ENV == "production" ? '' : process.env.api_url
+      },
+    },
   }
 </script>
 
@@ -99,39 +116,4 @@
     font-size: 2em !important;
   }
 
-  blockquote{
-  font-size: 1.4em;
-  width:60%;
-  margin:50px auto;
-  font-family:Open Sans;
-  font-style:italic;
-  color: #555555;
-  padding:1.2em 30px 1.2em 75px;
-  border-left:8px solid #78C0A8 ;
-  line-height:1.6;
-  position: relative;
-  background:#EDEDED;
-}
-
-blockquote::before{
-  font-family:Arial;
-  content: "\201C";
-  color:#78C0A8;
-  font-size:4em;
-  position: absolute;
-  left: 10px;
-  top:-10px;
-}
-
-blockquote::after{
-  content: '';
-}
-
-blockquote span{
-  display:block;
-  color:#333333;
-  font-style: normal;
-  font-weight: bold;
-  margin-top:1em;
-}
 </style>

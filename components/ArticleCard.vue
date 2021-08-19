@@ -13,10 +13,10 @@
         v-slot:default="{ hover }"
       >
     <v-img
-      :src="api_url + article.image.formats.small.url "
+      :src="api_url + article.image.formats.medium.url "
       height="277"
       max-height="277"
-      @click.stop="$router.push('../' + article.slug)"
+      @click.stop="$router.push('/' + article.slug)"
       :alt="article.title"
       style="cursor:pointer">
         <v-fade-transition>
@@ -53,7 +53,7 @@
     </v-col> -->
 
     <v-card-actions class="justify-center text-center" style="">
-      <v-btn text tile outlined :to="'../' + article.slug">Read More</v-btn>
+      <v-btn text tile outlined :to="'../' + article.slug" class="read-more-btn">Read More</v-btn>
     </v-card-actions>
   </v-card>
 </template>

@@ -14,12 +14,12 @@
         </v-col>
 
 
-        <TopPickCategories />
+        <TopPickCategories v-if="articles && articles.length > 0" />
 </v-row> 
 
-<div style="max-width:925px" class="mx-auto" >
+<div style="max-width:925px;margin-top:50px" class="mx-auto" >
 <v-row justify="center">
-    <v-col v-for="item in articles" :key="item.title" class="mb-10">
+    <v-col :cols="articles.length > 1 ? 6 : 12" v-for="item in articles" :key="item.title" class="mb-10">
          <ArticleCard v-if="articles.length > 0" :article="item" />      
     </v-col>   
     <v-col cols="12" class="text-center">

@@ -1,5 +1,5 @@
 query Articles($category: String!) {
-  articles( where: { category: { name: $category } }  ) {
+  articles(sort: "published_at:asc", where: { category: { name: $category } }  ) {
     id
     title
     description
@@ -14,5 +14,6 @@ query Articles($category: String!) {
       url
       formats
     }
+     published_at
   }
 }

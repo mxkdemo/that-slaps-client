@@ -1,5 +1,5 @@
 {
-  "name": "static-test",
+  "name": "that-slaps-client",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -19,9 +19,12 @@
     "cross-env": "^7.0.3",
     "graphql": "^15.5.1",
     "nuxt": "^2.15.7",
+    "nuxt-webfontloader": "^1.1.0",
+    "svg-loader": "^0.0.2",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
+    "@mdi/js": "^5.9.55",
     "@nuxtjs/vuetify": "^1.12.1",
     "fibers": "^5.0.0",
     "push-dir": "^0.4.1",

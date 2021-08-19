@@ -19,7 +19,7 @@
               </v-img>
               <div @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()" @click.stop="$router.push(article.slug)" class="solo-overlay"> </div>                    
             <v-card-actions style="justify-content:center">
-              <v-btn text tile outlined :to="article.slug">
+              <v-btn text tile outlined :to="article.slug" class="read-more-btn">
                 READ MORE
               </v-btn>
             </v-card-actions>

@@ -21,21 +21,21 @@
 
     <v-row class="site-header">
           <v-col cols="12" class="" align="center" justify="center">
-              <h1 class="that-slaps-font page-header-font" style="cursor:pointer" @click.stop="$router.push('/')">THAT SLAPS.</h1>
+              <h1 class="that-slaps-font page-header-font" style="cursor:pointer;margin-left:20px" @click.stop="$router.push('/')">THAT SLAPS.</h1>
           </v-col>
       </v-row>
 
 
         <v-app-bar 
-        app elevation="1" color="white" id="that-slaps-navbar" style="position:relative;margin-bottom: -64px;">
+        app elevation="2" color="white" id="that-slaps-navbar" style="position:relative;margin-bottom: -64px;">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" ></v-app-bar-nav-icon>
-        <div class="that-slaps-font that-slaps-logo slide-out" id="that-slaps-logo" 
+        <div class="that-slaps-font that-slaps-logo" id="that-slaps-logo" 
             style="position:absolute;font-weight:700;font-size:2em;cursor:pointer;transform: translateX(-100%);" 
             @click.stop="$router.push('/')" v-cloak>THAT SLAPS.</div>
             <v-row justify="center" align="center" class="hidden-sm-and-down" style="">
                 <v-col cols="12" style="display:flex;justify-content:center">
-                    <div v-for="(item, index) in categories" :key="item.name" style="display:inline;font-weight:600">
-                        <v-btn class="" text :to="'/category/' + item.name"> {{item.name}} </v-btn> 
+                    <div v-for="(item, index) in categories" :key="item.name" style="display:inline;font-weight:700 !important;font-size:11px !important">
+                        <v-btn class="nav-bar-font" text :to="'/category/' + item.name"> {{item.name}} </v-btn> 
                         <p v-if="index != categories.length - 1" style="display:inline">-</p>
                     </div>  
                 </v-col>
@@ -110,16 +110,21 @@ export default {
     -webkit-transform: translateX(-100%);
 }
 
+.nav-bar-font {
+    font-weight:700 !important;
+    font-size:11px !important
+}
+
  @media only screen and (min-width: 960px) {
      .slide-in {
+         display: block;
     margin-left:0px;
     animation: slide-in 0.3s forwards;
     -webkit-animation: slide-in 0.3s forwards;
+
 }
  .slide-out {
     margin-left:-50px;
-    animation: slide-out 0.3s forwards;
-    -webkit-animation: slide-out 0.3s forwards;
 }
   }
 

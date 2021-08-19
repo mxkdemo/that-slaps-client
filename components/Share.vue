@@ -14,8 +14,8 @@
           dark
           fab
         >
-          <v-icon v-if="fab">mdi-close</v-icon>
-          <v-icon v-else>mdi-share-variant</v-icon>
+          <v-icon v-if="fab">{{icons.close}}</v-icon>
+          <v-icon v-else>{{icons.share}}</v-icon>
         </v-btn>
       </template>
       <v-btn
@@ -25,7 +25,7 @@
         color="blue"
         @click.stop="onShare('twitter')"
       >
-        <v-icon>mdi-twitter</v-icon>
+        <v-icon>{{icons.twitter}}</v-icon>
       </v-btn>
       <v-btn
         fab
@@ -34,7 +34,7 @@
         color="indigo"
         @click.stop="onShare('facebook')"
       >
-        <v-icon>mdi-facebook</v-icon>
+        <v-icon>{{icons.facebook}}</v-icon>
       </v-btn>
       <v-btn
         fab
@@ -43,7 +43,7 @@
         color="red"
          @click.stop="onShare('pinterest')"
       >
-        <v-icon>mdi-pinterest</v-icon>
+        <v-icon>{{icons.pinterest}}</v-icon>
       </v-btn>
             <v-btn
         fab
@@ -52,12 +52,13 @@
         color="green"
          @click.stop="onShare('email')"
       >
-        <v-icon>mdi-email</v-icon>
+        <v-icon>{{icons.email}}</v-icon>
       </v-btn>
     </v-speed-dial>
 </template>
 
 <script>
+import { mdiShareVariant, mdiClose, mdiFacebook, mdiTwitter, mdiPinterest, mdiEmail } from '@mdi/js'
 export default {
     props: {
       article: {
@@ -68,10 +69,18 @@ export default {
     data: () => ({
         fab: false,
         shareHosts: {
-        twitter: "https://twitter.com/intent/tweet?url=",
-        facebook: "https://www.facebook.com/sharer.php?u=",
-        pinterest: "https://pinterest.com/pin/create/button/?url=",
-        email: "mailto:?subject={a}body="
+          twitter: "https://twitter.com/intent/tweet?url=",
+          facebook: "https://www.facebook.com/sharer.php?u=",
+          pinterest: "https://pinterest.com/pin/create/button/?url=",
+          email: "mailto:?subject={a}body="
+        },
+        icons: {
+          share: mdiShareVariant,
+          close: mdiClose,
+          twitter: mdiTwitter,
+          facebook: mdiFacebook,
+          pinterest: mdiPinterest,
+          email: mdiEmail
         }
     }),
     methods: {
