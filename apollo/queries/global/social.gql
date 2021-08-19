@@ -1,0 +1,8 @@
+query Global {
+  global {
+    facebook
+    twitter
+    instagram
+    pinterest
+  }
+}

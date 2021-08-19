@@ -1,6 +1,6 @@
 <template>
 
- <v-card tile outlined class="mx-auto fill-height" :max-width="1300">
+ <v-card tile outlined class="mx-auto fill-height" >
     
               <v-img
                 :src="api_url + article.image.url"
@@ -14,7 +14,7 @@
               <v-card-subtitle style="padding-bottom:0 !important; letter-spacing:2px; margin-bottom:0px !important; " 
               class="mb-0">{{article.category.name.toUpperCase()}}</v-card-subtitle>
               <hr style="margin-top:0px !important;padding-top:0px !important; width:200px; margin-left: 16px;margin-bottom:10px;" />
-              <v-card-title class="article-subheader-font" style="margin-top:0px;padding-top:0px;" v-text="article.title"></v-card-title>
+              <v-card-title class="article-subheader-font" style="margin-top:0px;padding-top:0px; font-weight:500 !important" v-text="article.title"></v-card-title>
                 
               </v-img>
               <div @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()" @click.stop="$router.push(article.slug)" class="solo-overlay"> </div>                    

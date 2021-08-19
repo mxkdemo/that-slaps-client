@@ -1,5 +1,5 @@
 <template>
-    <Carousel :articles="articles" />
+    <Carousel :articles="articles" :topHeader="'top picks'" />
 </template>
 
 <script>

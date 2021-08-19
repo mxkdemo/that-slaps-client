@@ -1,6 +1,6 @@
 # Write your query or mutation here
 query Articles {
-   articles(sort: "published_at:asc",where: { featured: true } limit: 3) {
+   articles(sort: "published_at:asc",where: { featured: true } limit: 4) {
     id
     slug
     title

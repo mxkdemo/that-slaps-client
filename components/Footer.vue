@@ -12,12 +12,18 @@
           <v-row>
  <v-col cols="12">
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
           class="mx-4"
           icon
+          @click.stop="onShare(global.facebook)"
         >
-          <v-icon size="24px">{{ icon }}</v-icon>
+          <v-icon size="24px">{{icons.facebook}}</v-icon>
+        </v-btn>
+          <v-btn
+          class="mx-4"
+          icon
+          @click.stop="onShare(global.instagram)"
+        >
+          <v-icon size="24px">{{icons.instagram}}</v-icon>
         </v-btn>
         </v-col>
         <v-col cols="12">
@@ -41,14 +47,21 @@
 </template>
 
 <script>
+import globalQuery from '~/apollo/queries/global/social'
 import { mdiFacebook, mdiInstagram } from '@mdi/js'
 export default {
-  data () {
+  apollo: {
+    global: {
+        prefetch: true,
+        query: globalQuery,
+    },
+  },
+  data () {   
     return {
-      icons: [
-        mdiFacebook,
-        mdiInstagram,
-      ],
+      icons: {
+        facebook: mdiFacebook,
+        instagram: mdiInstagram
+    },
       items: [
         {page: 'about', route: '/about'},
         {page: 'contact', route: 'contact'},
@@ -56,7 +69,12 @@ export default {
         {page: 'privacy policy', route: '/privacy-policy'},
       ],
     }
-  }
+  },
+  methods: {
+    onShare(host) {
+        window.open(host, "_blank")
+    },
+}
 }
 </script>
 

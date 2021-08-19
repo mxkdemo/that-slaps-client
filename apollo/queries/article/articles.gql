@@ -1,5 +1,5 @@
 query Articles {
-   articles(sort: "published_at:asc") {
+   articles(sort: "published_at:asc", limit: 6) {
     id
     slug
     title
