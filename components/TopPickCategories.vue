@@ -1,5 +1,5 @@
 <template>
-    <Carousel :articles="articles" :topHeader="'top picks'" />
+    <Carousel v-if="articles && articles.length > 0" :articles="articles" :topHeader="'top picks'" />
 </template>
 
 <script>

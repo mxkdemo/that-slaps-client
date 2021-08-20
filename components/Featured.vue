@@ -1,5 +1,5 @@
 <template>
-    <v-row justify="center" class="mb-10">
+    <v-row v-if="articles && articles.length > 0" justify="center" class="mb-10">
       <v-col cols="12" md="10" lg="12">
         <Carousel :articles="articles" :topHeader="'featured'" />
       </v-col>
