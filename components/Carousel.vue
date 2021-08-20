@@ -11,7 +11,19 @@
             <div class="article-header-font" style="padding-left:80px;">
                 {{item.title}}
             </div>
-          </div>      
+          </div>   
+        <template v-slot:placeholder>
+        <v-row
+          class="fill-height ma-0"
+          align="center"
+          justify="center"
+        >
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-5"
+          ></v-progress-circular>
+        </v-row>
+      </template>   
       </v-parallax>   
     </v-carousel-item>
   </v-carousel>

@@ -14,7 +14,7 @@
         v-slot:default="{ hover }"
       >
     <v-img
-      :src="api_url + item.image.formats.medium.url "
+      :src="api_url + item.image.formats.small.url "
       height="200"
       :alt="item.title"
       style="cursor:pointer">

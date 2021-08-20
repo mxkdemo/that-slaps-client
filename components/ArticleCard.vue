@@ -13,7 +13,7 @@
         v-slot:default="{ hover }"
       >
     <v-img
-      :src="api_url + article.image.formats.medium.url "
+      :src="api_url + article.image.formats.medium.url"
       height="277"
       max-height="277"
       @click.stop="$router.push('/' + article.slug)"
@@ -27,6 +27,18 @@
           >
           </div>
         </v-fade-transition>
+      <template v-slot:placeholder>
+        <v-row
+          class="fill-height ma-0"
+          align="center"
+          justify="center"
+        >
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-5"
+          ></v-progress-circular>
+        </v-row>
+      </template> 
       </v-img>
     </v-hover>
 

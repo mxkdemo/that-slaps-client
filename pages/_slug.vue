@@ -66,7 +66,18 @@
    <v-divider class="mx-6 my-6"></v-divider>
    <Related v-if="!$apollo.loading" />
   <Error v-if="!$apollo.loading && !articleBySlug"  />
-  </div>
+
+  <v-row v-if="$apollo.loading" justify="center" align="center" style="margin-top:50px"> 
+    <v-col cols="1" justify="center" align="center">    
+      <v-progress-circular
+      :size="70"
+      :width="7"
+      color="#272727"
+      indeterminate
+    ></v-progress-circular></v-col>
+  </v-row>
+
+</div>
 </template>
 
 <script>
@@ -101,7 +112,7 @@
       formatDate (date) {
         const options = { month: 'numeric',year: 'numeric', day: 'numeric' }
         return new Date(date).toLocaleDateString('en', options)
-      },
+      }
     },
     computed: {
       api_url() {

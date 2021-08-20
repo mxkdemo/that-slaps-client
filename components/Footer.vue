@@ -35,6 +35,7 @@
         {{item.page.toUpperCase()}}
         </v-btn>
         </v-col>
+        <v-col cols="12"><v-btn @click="$vuetify.goTo(target, options)"><v-icon size="24px">{{icons.top}}</v-icon></v-btn></v-col>
           </v-row>
          
       </v-card-title>
@@ -48,7 +49,7 @@
 
 <script>
 import globalQuery from '~/apollo/queries/global/social'
-import { mdiFacebook, mdiInstagram } from '@mdi/js'
+import { mdiFacebook, mdiInstagram, mdiArrowUpBoldCircleOutline } from '@mdi/js'
 export default {
   apollo: {
     global: {
@@ -60,7 +61,8 @@ export default {
     return {
       icons: {
         facebook: mdiFacebook,
-        instagram: mdiInstagram
+        instagram: mdiInstagram,
+        top: mdiArrowUpBoldCircleOutline
     },
       items: [
         {page: 'about', route: '/about'},
@@ -68,13 +70,36 @@ export default {
         {page: 'terms & conditions', route: '/terms-and-conditions'},
         {page: 'privacy policy', route: '/privacy-policy'},
       ],
+        duration: 500,
+        offset: 0,
+        easing: 'easeInOutCubic',
     }
   },
   methods: {
     onShare(host) {
         window.open(host, "_blank")
     },
-}
+    scrollToTop() {
+      window.scrollTo(0,0);
+    }
+  },
+      computed: {
+      target () {
+        return 0
+      },
+      options () {
+        return {
+          duration: this.duration,
+          offset: this.offset,
+          easing: this.easing,
+        }
+      },
+      element () {
+        if (this.selected === 'Button') return this.$refs.button
+        else if (this.selected === 'Radio group') return this.$refs.radio
+        else return null
+      },
+    },
 }
 </script>
 

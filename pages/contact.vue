@@ -7,11 +7,9 @@
       </v-row>
 
 
-    <v-row align="center" justify="center">
+    <v-row align="center" justify="center" v-if="!$apollo.loading && contact" v-cloak>
       <v-col xs="12" sm="10" md="10" lg="8" class="justify-center align-center text-center">
-         <div class="article-content-font">
-            {{contact}}
-         </div>
+        <div class="article-content-font" v-html="$md.render(contact)"></div>
       </v-col>
     </v-row> 
 

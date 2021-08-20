@@ -14,8 +14,9 @@ query Articles {
       url,
       formats
     }
-    featuredImage{
+    featuredImage {
       url
+      formats
     }
      published_at
   }

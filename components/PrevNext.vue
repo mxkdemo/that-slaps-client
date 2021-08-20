@@ -1,6 +1,5 @@
 <template>
 <v-container class="article-content-container">
-
       <v-row style="display:flex;">
       <v-col v-if="prevArticle" justify="center" align="start" cols="12" sm="12" md="6">
         <v-card outlined tile style="float:left;cursor:pointer" @click.stop="$router.push('/' + prevArticle.slug)" class="article-hover" >
@@ -59,7 +58,7 @@ export default {
     },
     apollo: {
       nextArticle: {
-        prefetch: true,
+        prefetch: false,
         query: nextArticleQuery,
         variables() {
           return { date: this.$props.date }
@@ -69,7 +68,7 @@ export default {
         }
       },
       prevArticle: {
-        prefetch: true,
+        prefetch: false,
         query: prevArticleQuery,
         variables() {
           return { date: this.$props.date }
@@ -78,6 +77,8 @@ export default {
           return data.articles && data.articles.length > 0 ? data.articles[0] : null
         }
       },
+    },
+    methods: {
     },
     computed: {
       api_url() {
