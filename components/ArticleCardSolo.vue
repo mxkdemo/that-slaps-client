@@ -1,6 +1,6 @@
 <template>
 
- <v-card tile outlined class="mx-auto fill-height" >
+ <v-card tile outlined class="mx-auto fill-height">
     
               <v-img
                 :src="api_url + article.image.url"
