@@ -14,10 +14,11 @@
       >
     <v-img
       :src="api_url + article.image.formats.medium.url"
+      :alt="article.image.alternativeText" 
+      :title="article.image.caption"
       height="277"
       max-height="277"
       @click.stop="$router.push('/' + article.slug)"
-      :alt="article.title"
       style="cursor:pointer">
         <v-fade-transition>
           <div
@@ -47,25 +48,15 @@
     </v-card-subtitle>
 
     <v-card-title class="justify-center text-center mt-0 pt-1 pb-0 mb-0" style="word-break: keep-all;height:96px;align-content:baseline;text-overflow: ellipsis;overflow:hidden">
-      <router-link :to="'../' + article.slug" class="article-subheader-font">{{article.title}}</router-link>
+      <router-link :to="'../' + article.slug" class="article-subheader-font" :title="article.title">{{article.title}}</router-link>
     </v-card-title>
 
     <v-card-text class="grow text-center">
       {{article.description}}
     </v-card-text>
 
-    <!-- <v-col class="mx-0 my-0 py-0">     
-      <v-chip-group column>
-            <v-chip x-small label outlined style="background-color:#272727" v-for="item in article.tags" 
-              :key="item.name" @click.stop="$router.push('/tags/' + item.name)">
-              <v-icon left dark> mdi-label</v-icon>
-              {{item.name}}
-            </v-chip>
-          </v-chip-group>
-    </v-col> -->
-
     <v-card-actions class="justify-center text-center" style="">
-      <v-btn text tile outlined :to="'../' + article.slug" class="read-more-btn">Read More</v-btn>
+      <v-btn text tile outlined :to="'../' + article.slug" class="read-more-btn" title="Read More">Read More</v-btn>
     </v-card-actions>
   </v-card>
 </template>

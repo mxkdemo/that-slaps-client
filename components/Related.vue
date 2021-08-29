@@ -1,5 +1,5 @@
 <template>
-  <v-container class="article-content-container mb-10 pb-10 pt-5">
+  <v-container v-if="articles && articles.length > 0" class="article-content-container mb-10 pb-10 pt-5">
       <h2 class="ibx-font">FEATURED ARTICLES</h2>
       <v-row>
       <v-col justify="center" align="center" cols="12" xs="12" sm="6" md="3" v-for="item in articles" :key="item.id">

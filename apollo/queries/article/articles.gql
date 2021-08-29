@@ -1,5 +1,5 @@
-query Articles {
-   articles(sort: "published_at:asc", limit: 6) {
+query Articles($start: Int!, $limit: Int!) {
+   articles(sort: "published_at:asc", start: $start, limit: $limit) {
     id
     slug
     title
@@ -11,8 +11,10 @@ query Articles {
       name
     }
     image {
-      url,
+      url
       formats
+      alternativeText
+      caption
     }
     published_at
   }

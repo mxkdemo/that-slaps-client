@@ -11,7 +11,7 @@
             <v-list dense>
                 <v-list-item link v-for="item in categories" :key="item.name" :to="'/category/' + item.name">
                 <v-list-item-content>
-                    <v-list-item-title style="; font-size:0.875rem;">
+                    <v-list-item-title style="; font-size:0.875rem;" :title="item.name.toUpperCase()">
                         {{item.name.toUpperCase()}}
                     </v-list-item-title>
                 </v-list-item-content>
@@ -21,7 +21,7 @@
 
     <v-row class="site-header">
           <v-col cols="12" class="" align="center" justify="center">
-              <h1 class="that-slaps-font page-header-font" style="cursor:pointer;margin-left:20px" @click.stop="$router.push('/')">THAT SLAPS.</h1>
+              <h1 class="that-slaps-font page-header-font" title="THAT SLAPS." style="cursor:pointer;margin-left:20px" @click.stop="$router.push('/')">THAT SLAPS.</h1>
           </v-col>
       </v-row>
 
@@ -35,8 +35,8 @@
             <v-row justify="center" align="center" class="hidden-sm-and-down" style="">
                 <v-col cols="12" style="display:flex;justify-content:center">
                     <div v-for="(item, index) in categories" :key="item.name" style="display:inline;font-weight:700 !important;font-size:11px !important">
-                        <v-btn class="nav-bar-font" text :to="'/category/' + item.name"> {{item.name}} </v-btn> 
-                        <p v-if="index != categories.length - 1" style="display:inline">-</p>
+                        <v-btn class="nav-bar-font" text :to="'/category/' + item.name" :title="item.name.toUpperCase()"> {{item.name}} </v-btn> 
+                        <p v-if="index != categories.length - 1" style="display:inline;padding:1px;"> - </p>
                     </div>  
                 </v-col>
             </v-row>

@@ -21,7 +21,7 @@
             <ArticleCard v-if="article[1]" :article="article[1]" />
             </v-col>
                 <v-col cols="12" class="py-3 px-3">
-            <ArticleCard v-if="article[2]" :article="article[2]" />
+            <ArticleCard v-if="article[2]" :article="article[2]" :cardWidth="'duo'" />
             </v-col>
         </v-row>
         <v-row justify="center">

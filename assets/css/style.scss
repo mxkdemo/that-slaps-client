@@ -76,9 +76,9 @@ div.container.article-content-container .v-chip.v-size--x-small {
   font-size: 12px;
 }
 
-.offset-image > .v-image__image.v-image__image--cover {
-    background-position: right 0px bottom 10px !important;   
-}
+// .offset-image > .v-image__image.v-image__image--cover {
+//     background-position: right 0px bottom 10px !important;   
+// }
 
 .sticky {
     height: fit-content !important;
@@ -151,12 +151,32 @@ div.container.article-content-container .v-chip.v-size--x-small {
   }
 }
 
+@media (min-width: 400px) {
+  .testres {
+    background-color: red;
+  }
+}
+@media (min-width: 600px) {
+  .testres {
+    background-color: blue;
+  }
+}
+@media (min-width: 900px) {
+  .testres {
+    background-color: green;
+  }
+}
+
 .article-content-font > img {
   max-width: -webkit-fill-available !important;
 }
 
 article img {
    max-width: -webkit-fill-available !important;
+}
+
+nav .v-list-item--active.v-list-item--link:before {
+  background-color: #fff !important;
 }
 
 

@@ -6,6 +6,7 @@
       direction="top"
       transition='slide-y-reverse-transition'
       fixed
+      title="Share"
     >
       <template v-slot:activator>
         <v-btn

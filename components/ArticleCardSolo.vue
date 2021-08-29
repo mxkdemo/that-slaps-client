@@ -3,8 +3,11 @@
  <v-card tile outlined class="mx-auto fill-height">
     
               <v-img
-                :src="api_url + article.image.formats.large.url"
-                :alt="article.title" @click.stop="$router.push(article.slug)" 
+                :src="api_url + article.image.url"
+                :alt="article.image.alternativeText" 
+                @click.stop="$router.push(article.slug)"
+                :srcset="srcset"
+                :sizes="sizes"
                 style="cursor:pointer;"
                 class="white--text align-end offset-image"  
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"        
@@ -39,6 +42,14 @@
     computed: {
       api_url() {
         return process.env.NODE_ENV == "production" ? '' : process.env.api_url
+      },
+      srcset() {
+        return `${this.api_url + this.article.image.formats.small.url} 400w, 
+          ${this.api_url + this.article.image.formats.medium.url} 600w, 
+          ${this.api_url + this.article.image.url} 900w`
+      },
+      sizes() {
+        return "(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 900px) 900px, 100vw"
       }
     },
     data: () => ({
