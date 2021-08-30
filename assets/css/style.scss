@@ -104,13 +104,12 @@ div.container.article-content-container .v-chip.v-size--x-small {
   }
 
   .carousel-category {
-    padding-left:80px;
     font-size:28px !important;
     letter-spacing: 2px;
-     padding-bottom:0 !important;
-     margin-bottom:0 !important;
-     line-height:1.3;
-     padding-bottom:20px;
+    padding-bottom:0 !important;
+    margin-bottom:0 !important;
+    line-height:1.3;
+    padding-bottom:20px;
   }
 
   .sidebar {
@@ -151,19 +150,14 @@ div.container.article-content-container .v-chip.v-size--x-small {
   }
 }
 
-@media (min-width: 400px) {
-  .testres {
-    background-color: red;
+@media (max-width: 600px) {
+  .carousel-text{
+    text-align: center;
+    padding-left: 0px !important;
   }
-}
-@media (min-width: 600px) {
-  .testres {
-    background-color: blue;
-  }
-}
-@media (min-width: 900px) {
-  .testres {
-    background-color: green;
+  .hr-carousel {
+    margin-left:auto;
+    margin-right: auto;
   }
 }
 
@@ -179,11 +173,16 @@ nav .v-list-item--active.v-list-item--link:before {
   background-color: #fff !important;
 }
 
+.carousel-text {
+  padding-left:80px;
+}
+
 
 blockquote{
   font-size: 1.4em;
   width:60%;
-  margin:50px auto;
+  margin:10px auto;
+  width:100%;
   font-style:italic;
   color: #555555;
   padding:1.2em 30px 1.2em 75px;

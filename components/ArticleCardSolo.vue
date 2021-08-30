@@ -3,7 +3,7 @@
  <v-card tile outlined class="mx-auto fill-height">
     
               <v-img
-                :src="api_url + article.image.url"
+                :src="api_url + (article.image.formats.large ? article.image.formats.large.url : article.image.url)"
                 :alt="article.image.alternativeText" 
                 @click.stop="$router.push(article.slug)"
                 :srcset="srcset"
@@ -16,11 +16,14 @@
 
               <v-card-subtitle style="padding-bottom:0 !important; letter-spacing:2px; margin-bottom:0px !important; " 
               class="mb-0">{{article.category.name.toUpperCase()}}</v-card-subtitle>
-              <hr style="margin-top:0px !important;padding-top:0px !important; width:200px; margin-left: 16px;margin-bottom:10px;" />
+              <v-divider color="white" style="width:200px;margin-left: 16px;margin-bottom:10px;"></v-divider>
               <v-card-title class="article-subheader-font" style="margin-top:0px;padding-top:0px; font-weight:500 !important" v-text="article.title"></v-card-title>
                 
               </v-img>
-              <div @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()" @click.stop="$router.push(article.slug)" class="solo-overlay"> </div>                    
+              <div @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()" @click.stop="$router.push(article.slug)" class="solo-overlay"> </div>   
+              <v-card-text class="grow text-center">
+                {{article.description}}
+              </v-card-text>                 
             <v-card-actions style="justify-content:center">
               <v-btn text tile outlined :to="article.slug" class="read-more-btn">
                 READ MORE

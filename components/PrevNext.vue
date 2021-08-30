@@ -1,29 +1,12 @@
 <template>
 <v-container class="article-content-container">
       <v-row style="display:flex;">
-      <v-col v-if="prevArticle" justify="center" align="start" cols="12" sm="12" md="6">
-        <v-card outlined tile style="float:left;cursor:pointer" @click.stop="$router.push('/' + prevArticle.slug)" class="article-hover" >
+      <v-col v-if="nextArticle" justify="center" align="start" cols="12" sm="12" md="6" offset="0" :offset-md="onlyNext - 1" :offset-lg="onlyNext">
+        <v-card outlined style="float:left;cursor:pointer" @click.stop="$router.push('/' + nextArticle.slug)" class="article-hover">
             <v-list-item three-line>
             <v-list-item-avatar size="80" tile>
-                <v-img v-if="prevArticle.image" :src="api_url + prevArticle.image.formats.thumbnail.url"></v-img>
+                <v-img v-if="nextArticle.image" :src="api_url + nextArticle.image.formats.thumbnail.url"></v-img>
             </v-list-item-avatar>
-            <v-list-item-content>
-                <div class="text-overline mb-4">
-                PREVIOUS
-                </div>
-                <v-list-item-title class="mb-1 ibx-font">
-                {{prevArticle.title}}
-                </v-list-item-title>
-                <v-list-item-subtitle>{{prevArticle.description}}</v-list-item-subtitle>
-            </v-list-item-content>
-
-            </v-list-item>
-        </v-card>
-
-      </v-col>
-      <v-col v-if="nextArticle" justify="center" align="end" cols="12" sm="12" md="6" offset="0" :offset-md="onlyNext - 1" :offset-lg="onlyNext">
-        <v-card outlined style="float:right;cursor:pointer" @click.stop="$router.push('/' + nextArticle.slug)" class="article-hover">
-            <v-list-item three-line>
             <v-list-item-content>
                 <div class="text-overline mb-4">
                 NEXT
@@ -33,8 +16,24 @@
                 </v-list-item-title>
                 <v-list-item-subtitle>{{nextArticle.description}}</v-list-item-subtitle>
             </v-list-item-content>
+
+            </v-list-item>
+        </v-card>
+      </v-col>
+      <v-col v-if="prevArticle" justify="center" align="end" cols="12" sm="12" md="6">
+        <v-card outlined tile style="float:right;cursor:pointer" @click.stop="$router.push('/' + prevArticle.slug)" class="article-hover" >
+            <v-list-item three-line>
+            <v-list-item-content>
+                <div class="text-overline mb-4">
+                PREVIOUS
+                </div>
+                <v-list-item-title class="mb-1 ibx-font">
+                {{prevArticle.title}}
+                </v-list-item-title>
+                <v-list-item-subtitle>{{prevArticle.description}}</v-list-item-subtitle>
+            </v-list-item-content>
             <v-list-item-avatar size="80" tile>
-                <v-img v-if="nextArticle.image" :src="api_url + nextArticle.image.formats.thumbnail.url"></v-img>
+                <v-img v-if="prevArticle.image" :src="api_url + prevArticle.image.formats.thumbnail.url"></v-img>
             </v-list-item-avatar>
             </v-list-item>
         </v-card>
