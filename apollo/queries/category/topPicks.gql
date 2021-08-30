@@ -1,5 +1,5 @@
 query Articles($category: String!) {
-  articles( where: { category: { name: $category },topPick: true },sort: "published_at:asc", limit: 4  ) {
+  articles( where: { category: { name: $category },topPick: true },sort: "published_at:desc", limit: 4  ) {
     id
     title
     description

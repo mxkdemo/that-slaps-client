@@ -1,5 +1,5 @@
 query Article($start: Int!, $limit: Int!, $searchTerm: String!) {
-  articles(sort: "published_at:asc", start: $start, limit: $limit, where: 
+  articles(sort: "published_at:desc", start: $start, limit: $limit, where: 
     { 
     _or: [{ title_contains: $searchTerm}, {description_contains: $searchTerm}] 
     }) {

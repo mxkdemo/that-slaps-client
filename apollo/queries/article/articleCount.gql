@@ -1,8 +1,8 @@
 # Write your query or mutation here
 query Article{
-  articlesConnection {
+  articlesConnection(where:{published_at_null:false}) {
     aggregate {
-      totalCount
+      count
     }
   }
 }

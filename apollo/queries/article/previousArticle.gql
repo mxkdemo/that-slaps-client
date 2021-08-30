@@ -1,6 +1,6 @@
 # Write your query or mutation here
 query Article($date: String!) {
-   articles(sort: "published_at:desc",where:{published_at_lt: $date}, limit:1 ) {
+   articles(sort: "published_at:asc",where:{published_at_lt: $date}, limit:1 ) {
     id
     slug
     title
