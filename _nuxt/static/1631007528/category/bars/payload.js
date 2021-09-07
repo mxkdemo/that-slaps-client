@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/category/bars", {data:[{}],fetch:{},mutations:void 0});

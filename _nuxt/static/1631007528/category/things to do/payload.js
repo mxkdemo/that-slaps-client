@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/category/things%20to%20do", {data:[{}],fetch:{},mutations:void 0});
