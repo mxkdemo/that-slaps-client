@@ -5,7 +5,7 @@ import getSiteMeta from './utils/getSiteMeta';
 const meta = getSiteMeta();
 
 const api_url = process.env.NODE_ENV == "production"
-  ? "https://that-slaps.herokuapp.com/"
+  ? "https://that-slaps.herokuapp.com"
   : 'http://localhost:1337'
 
   const host_url = process.env.NODE_ENV == "production"
