@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/en-root-plant-based-street-food-in-south-london", {data:[{}],fetch:{},mutations:void 0});
