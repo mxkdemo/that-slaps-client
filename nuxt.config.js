@@ -72,6 +72,10 @@ export default {
   plugins: [
   ],
 
+  googleAnalytics: {
+    id: 'G-FX66GCWWKD'
+  },
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -83,6 +87,7 @@ export default {
     '@nuxtjs/markdownit',
     '@/modules/generator',
     'nuxt-webfontloader',
+    '@nuxtjs/google-analytics'
   ],
   apollo: {
     clientConfigs: {
